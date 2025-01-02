@@ -1,9 +1,14 @@
+
+// handles all drum interactions
 function handleBtnClick() {
     let targetHtml = this.innerHTML
     makeSound(targetHtml)
+    btnAnimation(targetHtml)
 
 }
 
+
+// when drum is clicked
 let btn_len = document.querySelectorAll('.drum').length
 
 for (let i = 0; i < btn_len; i++) {
@@ -52,4 +57,17 @@ function makeSound (key) {
 
 document.addEventListener('keydown', function (event){
     makeSound(event.key)
+    btnAnimation(event.key)
 })
+
+
+
+// drum animation
+function btnAnimation (currentkey) {
+    let activeBtn = document.querySelector('.' + currentkey)
+    activeBtn.classList.add('pressed')
+    setTimeout(function (){
+        activeBtn.classList.remove('pressed')},
+        100)
+    activeBtn.classList.toggle('pressssed')
+}
